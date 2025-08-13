@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Circle, CheckCircle, XCircle, Lightbulb, X, Edit, Plus, Trash2, Play, Pause } from 'lucide-react';
+import { Circle, CheckCircle, XCircle, Lightbulb, X, Edit, Plus, Trash2, Play, Pause, RefreshCw } from 'lucide-react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, setDoc, addDoc, onSnapshot, collection, serverTimestamp } from 'firebase/firestore';
