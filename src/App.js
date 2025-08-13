@@ -4,6 +4,22 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, setDoc, addDoc, onSnapshot, collection, serverTimestamp } from 'firebase/firestore';
 
+// --- Firebase configuration from environment variables ---
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+};
+
+// --- Initialize Firebase ---
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
 // --- Shared Data and Utility Functions ---
 const ptvData = [
   { ptv: 1.8, r50p: 5.9, r50v: 7.5, d2cmp: 50.0, d2cmv: 57.0 },
@@ -13,11 +29,9 @@ const ptvData = [
   { ptv: 22.0, r50p: 4.5, r50v: 5.5, d2cmp: 54.0, d2cmv: 63.0 },
   { ptv: 34.0, r50p: 4.3, r50v: 5.3, d2cmp: 58.0, d2cmv: 68.0 },
   { ptv: 50.0, r50p: 4.0, r50v: 5.0, d2cmp: 62.0, d2cmv: 77.0 },
-  { ptv: 70.0, r50p: 3.5, r50v: 4.8, d2cmp: 66.0, d2cmv: 86.0 },
-  { ptv: 95.0, r50p: 3.3, r50v: 4.4, d2cmp: 70.0, d2cmv: 89.0 },
-  { ptv: 126.0, r50p: 3.1, r50v: 4.0, d2cmp: 73.0, d2cmv: 91.0 },
-  { ptv: 163.0, r50p: 2.9, r50v: 3.7, d2cmp: 77.0, d2cmv: 94.0 },
+  { ptv: 70.0, r50p: 3.5, r50v: 4.8, d2cmp: 66.0, d2cmv: 80.0 }
 ];
+
 
 const glossaryTerms = [
   { term: 'SABR', definition: 'Stereotactic Ablative Body Radiotherapy, a specialized form of external beam radiation therapy using high doses over a few fractions.' },
@@ -550,3 +564,5 @@ const App = () => {
 };
 
 export default App;
+
+
