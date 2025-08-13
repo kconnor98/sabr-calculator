@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Circle, CheckCircle, XCircle, ArrowRight, Lightbulb, X, Edit, Plus, Trash2, Play, Pause } from 'lucide-react';
+import { Circle, CheckCircle, XCircle, Lightbulb, X, Edit, Plus, Trash2, Play, Pause } from 'lucide-react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc, addDoc, onSnapshot, collection, serverTimestamp } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, addDoc, onSnapshot, collection, serverTimestamp } from 'firebase/firestore';
 
 // --- Shared Data and Utility Functions ---
 const ptvData = [
@@ -464,7 +464,6 @@ const App = () => {
   const [saveStatusInstitutional, setSaveStatusInstitutional] = useState(null);
   const [useInstitutionalData, setUseInstitutionalData] = useState(false);
   const [db, setDb] = useState(null);
-  const [auth, setAuth] = useState(null);
   const [userId, setUserId] = useState(null);
   const [isAuthReady, setIsAuthReady] = useState(false);
   const [appId, setAppId] = useState('default-app-id');
@@ -482,7 +481,6 @@ const App = () => {
         const firestoreDb = getFirestore(app);
         const firebaseAuth = getAuth(app);
         setDb(firestoreDb);
-        setAuth(firebaseAuth);
         setAppId(firebaseConfig.appId || 'default-app-id');
 
         onAuthStateChanged(firebaseAuth, async (user) => {
