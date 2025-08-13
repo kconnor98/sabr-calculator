@@ -327,7 +327,7 @@ const InterplayEffectAnimation = () => {
         ctx.fillRect(initialRightX, leafY, canvasWidth - initialRightX, mlcLeafHeight * 2);
         ctx.strokeRect(initialRightX, leafY, canvasWidth - initialRightX, mlcLeafHeight * 2);
     }
-  }, [ptvX, ptvY, ptvWidth, ptvHeight, itvX, itvY, itvWidth, itvHeight]);
+  }, [ptvX, ptvY, ptvWidth, ptvHeight, itvX, itvY, itvWidth, itvHeight, centerX, centerY, mlcLeafHeight]);
 
   // --- Simulation 1 Logic ---
   const initializeMLC1 = useCallback(() => { mlcLeftLeaves1.current = []; mlcRightLeaves1.current = []; for (let i = 0; i < mlcLeafCount; i++) { const leafY = i * mlcLeafHeight * 2; mlcLeftLeaves1.current.push({ x: mlcMinRetraction, targetX: mlcMinRetraction + Math.random() * (mlcMaxExtension - mlcMinRetraction), y: leafY }); mlcRightLeaves1.current.push({ x: mlcMaxRetraction, targetX: mlcMaxRetraction - Math.random() * (mlcMaxRetraction - mlcMaxExtension), y: leafY }); } }, [mlcMaxExtension, mlcMaxRetraction, mlcMinRetraction, mlcLeafHeight]);
